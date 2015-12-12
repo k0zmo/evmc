@@ -1,0 +1,30 @@
+bubble_sort.evm
+	First argument: count of numbers
+	Next count arguments: numeric sequence
+
+convolution.evm
+	First argument: count of input data
+	Next count arguments: input data
+
+fibonacci_loop.evm
+fibonacci_recursive.evm
+fibonacci_mem.evm
+	First argument: fibonacci series length
+	
+input.evm
+	First argument: count of input data
+	Next count arguments: input series data
+
+crc32.evm
+frame_pointer.evm
+opcode_arith.evm
+opcode_call_ret.evm
+opcode_flow.evm
+	No input
+
+opcode_flow2.evm
+	First argument: number
+
+opcode_io.evm
+opcode_memory.evm
+	First argument: number that will be printed on screen
