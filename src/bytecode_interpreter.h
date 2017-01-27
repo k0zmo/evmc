@@ -26,7 +26,7 @@ public:
 
 private:
     int64_t& reg(byte i);
-    int64_t& mem(int64_t addr);
+    char* mem(int64_t addr);
 
 private:
     int64_t regs_[NUM_REGISTERS] = {};

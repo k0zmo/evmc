@@ -55,11 +55,11 @@ void bytecode_interpreter::run(const bytecode_stream& stream)
             break;
         // store value of reg2 in memory cell pointed by reg1
         case opcode::store:
-            mem(reg(instr.dst)) = reg(instr.src);
+            memcpy(mem(reg(instr.dst)), &reg(instr.src), sizeof(int64_t));
             break;
         // load value from memory cell pointed by reg2 into register_t reg1
         case opcode::load:
-            reg(instr.dst) = mem(reg(instr.src));
+            memcpy(&reg(instr.dst), mem(reg(instr.src)), sizeof(int64_t));
             break;
         // load 8-bit immediate value to reg
         case opcode::ldc:
@@ -141,9 +141,9 @@ int64_t& bytecode_interpreter::reg(byte i)
     return regs_[i];
 }
 
-int64_t& bytecode_interpreter::mem(int64_t addr)
+char* bytecode_interpreter::mem(int64_t addr)
 {
     if (addr < 0 || static_cast<uint64_t>(addr) + 8 > mem_size_)
         throw std::runtime_error{"Error: Runtime memory offset out of bounds"};
-    return *reinterpret_cast<int64_t*>(&data_[static_cast<size_t>(addr)]);
+    return &data_[static_cast<size_t>(addr)];
 }
